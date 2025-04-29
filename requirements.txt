@@ -1,0 +1,5 @@
+flask==2.3.2             #OK (dernière version stable majeure)
+py2neo==2023.1.1         # Dernière version stable (au lieu de 2021.2.4)
+python-dotenv==1.0.1     # Dernière version stable (au lieu de 1.0.0)
+flask-cors==4.0.0        # Gestion des CORS pour les API
+pytest==7.4.0            # Pour les tests

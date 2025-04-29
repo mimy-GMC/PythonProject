@@ -1,0 +1,22 @@
+version: '3'
+services:
+  neo4j:
+    image: neo4j:5.13.0
+    container_name: neo4j
+    restart: unless-stopped
+    ports:
+      - "7474:7474" # Interface Web Neo4j Browser
+      - "7687:7687" # Interface Web Bolt (protocole natif Neo4j)
+    environment:
+      NEO4J_AUTH: neo4j/password
+    volumes:
+      - neo4j_data:/data
+    # Vérification automatique de la santé du service
+    healthcheck:  
+      test: ["CMD", "cypher-shell", "--username", "neo4j", "--password", "password", "RETURN 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  neo4j_data:
